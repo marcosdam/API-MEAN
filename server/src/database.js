@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 
 // URL server (MongoDB Atlas)
 const URI = 'mongodb+srv://root:root@cluster0.t1j0m.mongodb.net/damc2020?retryWrites=true&w=majority';
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+};
 
 // .then -> Tod0 bien | .catch -> Capturar error
 mongoose.connect(URI)

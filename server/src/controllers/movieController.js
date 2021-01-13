@@ -56,4 +56,13 @@ movieCtrl.updateMovie = async (req, res) => {
     res.json({status: 'Movie actualizada'});
 };
 
+// Func deleteMovie (Req & Res)
+movieCtrl.deleteMovie = async (req, res) => {
+    await Movie.findByIdAndDelete(req.params.id)
+        .catch((err) => {
+           console.error(err);
+        });
+    res.json({satatus: 'Movie borrada'});
+};
+
 module.exports = movieCtrl;
