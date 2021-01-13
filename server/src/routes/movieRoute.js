@@ -4,8 +4,10 @@ const movieCtrl = require('../controllers/movieController');
 
 
 // Routes
-router.get('/', movieCtrl.getMovies);
-router.post('/', movieCtrl.createMovie);
+router.get('/', movieCtrl.getMovies);   // GET todas las pelis
+router.post('/', movieCtrl.createMovie);    // POST una peli
+router.get('/:id', movieCtrl.getOneMovie) // GET una sola peli (:id -> con 2 puntos)
+router.put('/:id', movieCtrl.updateMovie) // PUT una peli (actualizar)
 
 
 module.exports = router;
