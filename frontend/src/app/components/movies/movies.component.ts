@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-movies',
@@ -12,4 +13,8 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Func addMovie
+  addMovie(movieForm: NgForm) {
+
+  }
 }
