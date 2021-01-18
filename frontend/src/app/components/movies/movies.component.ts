@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {MovieService} from "../../services/movie.service";
+import {Movie} from "../../models/movie";
 
 @Component({
   selector: 'app-movies',
@@ -8,13 +10,21 @@ import {NgForm} from "@angular/forms";
 })
 export class MoviesComponent implements OnInit {
 
-  constructor() { }
+  // Var myCountry
+  myCountry: string;
+
+  // Inyectar movieService en el constructor
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
   }
 
-  // Func addMovie
-  addMovie(movieForm: NgForm) {
+  addMovie(selectedMovie: Movie, movieForm: NgForm) {
 
+  }
+
+  addCountry(){
+    this.movieService.selectedMovie.countries.push(this.myCountry); // Añadir
+    this.myCountry = '';  // Reiniciar var
   }
 }
