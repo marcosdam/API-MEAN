@@ -7,6 +7,8 @@
         </div>
         <div class="card-content">
           <form #movieForm="ngForm" (ngSubmit)="addMovie(movieService.selectedMovie, movieForm)">
+            <!-- Guardar ID de manera oculta cuando editemos un elemento -->
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="movieService.selectedMovie._id"/>
             <div class="row">
               <div class="input-field col s12">
                 <!-- TITLE -->
@@ -106,45 +108,70 @@
                 <!-- INICIO Añadir PLOT a la peli-->
                 <fieldset>
                   <legend>Plot</legend>
-                <input type="text" name="plot" #plot="ngModel"
-                       [(ngModel)]="movieService.selectedMovie.plot" placeholder="Enter plot"/>
+                  <input type="text" name="plot" #plot="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.plot" placeholder="Enter plot"/>
                 </fieldset>
                 <!-- FIN Añadir PLOT a la peli-->
 
                 <!-- INICIO Añadir POSTER a la peli-->
                 <fieldset>
                   <legend>Poster</legend>
-                <input type="text" name="poster" #poster="ngModel"
-                       [(ngModel)]="movieService.selectedMovie.poster" placeholder="Enter poster"/>
+                  <input type="text" name="poster" #poster="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.poster" placeholder="Enter poster"/>
                 </fieldset>
                 <!-- FIN Añadir POSTER a la peli-->
+
+                <!-- INICIO IMDB -->
+                <fieldset>
+                  <legend>IMDB</legend>
+                  <input type="text" name="id" #id="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.imdb.id"
+                         placeholder="Enter IMDB id"/>
+                  <input type="number" name="rating" #rating="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.imdb.rating"
+                         placeholder="Enter IMDB rating"/>
+                  <input type="number" name="votes" #votes="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.imdb.votes"
+                         placeholder="Enter IMDB votes"/>
+                </fieldset>
+                <!-- FIN IMDB -->
 
                 <!-- INICIO TOMATO -->
                 <fieldset>
                   <legend>Tomato</legend>
-                  <input type="number" name="meter" #meter="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.meter"
-                  placeholder="Enter TOMATO meter"/>
-                  <input type="text" name="image" #image="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.image"
+                  <input type="number" name="meter" #meter="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.meter"
+                         placeholder="Enter TOMATO meter"/>
+                  <input type="text" name="image" #image="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.image"
                          placeholder="Enter TOMATO image"/>
-                  <input type="number" name="rating" #rating="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.rating"
+                  <input type="number" name="rating" #rating="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.rating"
                          placeholder="Enter TOMATO rating"/>
-                  <input type="number" name="reviews" #reviews="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.reviews"
+                  <input type="number" name="reviews" #reviews="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.reviews"
                          placeholder="Enter TOMATO reviews"/>
-                  <input type="number" name="fresh" #fresh="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.fresh"
+                  <input type="number" name="fresh" #fresh="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.fresh"
                          placeholder="Enter TOMATO fresh"/>
-                  <input type="text" name="consensus" #consensus="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.consensus"
+                  <input type="text" name="consensus" #consensus="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.consensus"
                          placeholder="Enter TOMATO consensus"/>
-                  <input type="number" name="userMeter" #userMeter="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userMeter"
+                  <input type="number" name="userMeter" #userMeter="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.userMeter"
                          placeholder="Enter TOMATO userMeter"/>
-                  <input type="number" name="userRating" #userRating="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userRating"
+                  <input type="number" name="userRating" #userRating="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.userRating"
                          placeholder="Enter TOMATO userRating"/>
-                  <input type="number" name="userReviews" #userReviews="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userReviews"
+                  <input type="number" name="userReviews" #userReviews="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.tomato.userReviews"
                          placeholder="Enter TOMATO userReviews"/>
                 </fieldset>
                 <!-- FIN TOMATO -->
 
                 <!-- INICIO METACRITIC -->
-                <input type="number" name="metacritic" #metacritic="ngModel" [(ngModel)]="movieService.selectedMovie.metacritic"
+                <input type="number" name="metacritic" #metacritic="ngModel"
+                       [(ngModel)]="movieService.selectedMovie.metacritic"
                        placeholder="Enter TOMATO metacritic"/>
                 <!-- FIN METACRITIC -->
 
@@ -152,8 +179,9 @@
                 <fieldset>
                   <legend>Awards</legend>
                   <input type="number" name="wins" #wins="ngModel" [(ngModel)]="movieService.selectedMovie.awards.wins"
-                  placeholder="Enter AWARDS wins"/>
-                  <input type="number" name="nominations" #nominations="ngModel" [(ngModel)]="movieService.selectedMovie.awards.nominations"
+                         placeholder="Enter AWARDS wins"/>
+                  <input type="number" name="nominations" #nominations="ngModel"
+                         [(ngModel)]="movieService.selectedMovie.awards.nominations"
                          placeholder="Enter AWARDS nominations"/>
                   <input type="text" name="text" #text="ngModel" [(ngModel)]="movieService.selectedMovie.awards.text"
                          placeholder="Enter AWARDS text"/>
@@ -165,8 +193,13 @@
                        placeholder="Enter TYPE"/>
                 <!-- FIN Añadir TYPE a la peli-->
 
-                <!-- BOTÓN CONFIRMAR -->
-                <button type="submit" class="btn">Add</button>
+                <!-- BOTÓNES CLEAN & SAVE -->
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <button class="btn right" (click)="resetForm(movieForm)">Clean</button>
+                    <button type="submit" class="btn right">Save</button>
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -174,6 +207,23 @@
         </div>
       </div>
     </div>
-    <div class="col s12 m6"><h3 class="center blue-text">Movie List</h3></div>
+    <div class="col s12 m6 right-align">
+      <!-- RECORRER LISTA PELIS -->
+      <h3 class="center blue-text">Movie List</h3>
+      <ul>
+        <li *ngFor="let movie of movieService.movies">
+          <h5>{{ movie.title }}
+            <!-- BTN EDITAR -->
+            <a class="cursor" (click)="editMovie(movie)">
+              <i class="material-icons">edit</i>
+            </a>
+            <!-- BTN BORRAR -->
+            <a class="cursor" (click)="deleteMovie(movie._id)">
+              <i class="material-icons">delete</i>
+            </a>
+          </h5>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
