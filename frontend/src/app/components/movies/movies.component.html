@@ -9,18 +9,24 @@
           <form #movieForm="ngForm" (ngSubmit)="addMovie(movieService.selectedMovie, movieForm)">
             <div class="row">
               <div class="input-field col s12">
+                <!-- TITLE -->
                 <input type="text" name="title" #title="ngModel"
-                [(ngModel)]="movieService.selectedMovie.title"
-                placeholder="Enter title">
+                       [(ngModel)]="movieService.selectedMovie.title"
+                       placeholder="Enter title">
+                <!-- YEAR -->
                 <input type="number" name="year" #year="ngModel"
                        [(ngModel)]="movieService.selectedMovie.year"
                        placeholder="Enter year">
+                <!-- RATED -->
                 <input type="text" name="rated" #rated="ngModel"
                        [(ngModel)]="movieService.selectedMovie.rated"
                        placeholder="Enter rated">
+                <!-- RUNTIME -->
                 <input type="number" name="runtime" #runtime="ngModel"
                        [(ngModel)]="movieService.selectedMovie.runtime"
                        placeholder="Enter runtime">
+
+                <!-- INICIO Añadir PELIS-->
                 <div class="row">
                   <div class="col s10">
                     <label>
@@ -28,20 +34,146 @@
                              [(ngModel)]="myCountry" placeholder="Enter country"/>
                       <p><b>Countries: </b>
                         <span *ngFor="let c of movieService.selectedMovie.countries">
-                        {{ c }}, </span> </p>
+                        {{ c }}, </span></p>
                     </label>
                   </div>
-                  <!-- Botón para añadir peli a la lista-->
+                  <!-- Botón para añadir PELI a la lista de pelis -->
                   <div class="col s2">
-                    <button class="btn" (click)="addCountry()">+</button>
+                    <span class="btn" (click)="addCountry()">+</span>
                   </div>
                 </div>
+                <!-- FIN Añadir pelis-->
+
+                <!-- INICIO Añadir GÉNEROS a la peli-->
+                <div class="row">
+                  <div class="col s10">
+                    <label>
+                      <input type="text" name="genre" #genre="ngModel"
+                             [(ngModel)]="myGenre" placeholder="Enter genre"/>
+                      <p><b>Countries: </b>
+                        <span *ngFor="let g of movieService.selectedMovie.genres">
+                        {{ g }}, </span></p>
+                    </label>
+                  </div>
+                  <!-- Botón para añadir género a la lista de géneros en una peli -->
+                  <div class="col s2">
+                    <span class="btn" (click)="addGenre()">+</span>
+                  </div>
+                </div>
+                <!-- FIN Añadir GÉNEROS a la peli-->
+
+                <!-- INICIO Añadir DIRECTOR a la peli-->
+                <input type="text" name="director" #director="ngModel"
+                       [(ngModel)]="movieService.selectedMovie.director" placeholder="Enter director"/>
+                <!-- FIN Añadir DIRECTOR a la peli-->
+
+                <!-- INICIO Añadir WRITER a la lista de writers peli-->
+                <div class="row">
+                  <div class="col s10">
+                    <label>
+                      <input type="text" name="writer" #writer="ngModel"
+                             [(ngModel)]="myWriter" placeholder="Enter writer"/>
+                      <p>
+                      <span *ngFor="let w of movieService.selectedMovie.writers">
+                        {{ w }}, </span></p>
+                    </label>
+                  </div>
+                  <!-- Botón para añadir writer a la lista de writers en una peli -->
+                  <div class="col s2">
+                    <span class="btn" (click)="addWriter()">+</span>
+                  </div>
+                </div>
+                <!-- FIN Añadir WRITER a la lista de writers de la peli-->
+
+                <!-- INICIO Añadir ACTOR a la lista de actores peli-->
+                <div class="row">
+                  <div class="col s10">
+                    <label>
+                      <input type="text" name="actor" #actor="ngModel"
+                             [(ngModel)]="myActor" placeholder="Enter actor"/>
+                      <p>
+                      <span *ngFor="let a of movieService.selectedMovie.actors">
+                        {{ a }}, </span></p>
+                    </label>
+                  </div>
+                  <!-- Botón para añadir director a la lista de directores en una peli -->
+                  <div class="col s2">
+                    <span class="btn" (click)="addActor()">+</span>
+                  </div>
+                </div>
+                <!-- FIN Añadir ACTOR a la lista de actores de la peli-->
+
+                <!-- INICIO Añadir PLOT a la peli-->
+                <fieldset>
+                  <legend>Plot</legend>
+                <input type="text" name="plot" #plot="ngModel"
+                       [(ngModel)]="movieService.selectedMovie.plot" placeholder="Enter plot"/>
+                </fieldset>
+                <!-- FIN Añadir PLOT a la peli-->
+
+                <!-- INICIO Añadir POSTER a la peli-->
+                <fieldset>
+                  <legend>Poster</legend>
+                <input type="text" name="poster" #poster="ngModel"
+                       [(ngModel)]="movieService.selectedMovie.poster" placeholder="Enter poster"/>
+                </fieldset>
+                <!-- FIN Añadir POSTER a la peli-->
+
+                <!-- INICIO TOMATO -->
+                <fieldset>
+                  <legend>Tomato</legend>
+                  <input type="number" name="meter" #meter="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.meter"
+                  placeholder="Enter TOMATO meter"/>
+                  <input type="text" name="image" #image="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.image"
+                         placeholder="Enter TOMATO image"/>
+                  <input type="number" name="rating" #rating="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.rating"
+                         placeholder="Enter TOMATO rating"/>
+                  <input type="number" name="reviews" #reviews="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.reviews"
+                         placeholder="Enter TOMATO reviews"/>
+                  <input type="number" name="fresh" #fresh="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.fresh"
+                         placeholder="Enter TOMATO fresh"/>
+                  <input type="text" name="consensus" #consensus="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.consensus"
+                         placeholder="Enter TOMATO consensus"/>
+                  <input type="number" name="userMeter" #userMeter="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userMeter"
+                         placeholder="Enter TOMATO userMeter"/>
+                  <input type="number" name="userRating" #userRating="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userRating"
+                         placeholder="Enter TOMATO userRating"/>
+                  <input type="number" name="userReviews" #userReviews="ngModel" [(ngModel)]="movieService.selectedMovie.tomato.userReviews"
+                         placeholder="Enter TOMATO userReviews"/>
+                </fieldset>
+                <!-- FIN TOMATO -->
+
+                <!-- INICIO METACRITIC -->
+                <input type="number" name="metacritic" #metacritic="ngModel" [(ngModel)]="movieService.selectedMovie.metacritic"
+                       placeholder="Enter TOMATO metacritic"/>
+                <!-- FIN METACRITIC -->
+
+                <!-- INICIO AWARDS -->
+                <fieldset>
+                  <legend>Awards</legend>
+                  <input type="number" name="wins" #wins="ngModel" [(ngModel)]="movieService.selectedMovie.awards.wins"
+                  placeholder="Enter AWARDS wins"/>
+                  <input type="number" name="nominations" #nominations="ngModel" [(ngModel)]="movieService.selectedMovie.awards.nominations"
+                         placeholder="Enter AWARDS nominations"/>
+                  <input type="text" name="text" #text="ngModel" [(ngModel)]="movieService.selectedMovie.awards.text"
+                         placeholder="Enter AWARDS text"/>
+                </fieldset>
+                <!-- FIN AWARDS -->
+
+                <!-- INICIO Añadir TYPE a la peli-->
+                <input type="text" name="type" #type="ngModel" [(ngModel)]="movieService.selectedMovie.type"
+                       placeholder="Enter TYPE"/>
+                <!-- FIN Añadir TYPE a la peli-->
+
+                <!-- BOTÓN CONFIRMAR -->
+                <button type="submit" class="btn">Add</button>
+
               </div>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <div class="col s12 m6"> <h3 class="center blue-text">Movie List</h3></div>
+    <div class="col s12 m6"><h3 class="center blue-text">Movie List</h3></div>
   </div>
 </div>

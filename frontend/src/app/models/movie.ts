@@ -2,7 +2,7 @@ export class Movie {
   myimdb = {id: '', rating: null, votes: null};
   myTomato = {meter: null, image: '', rating: null, reviews: null, fresh: null, consensus: '',
     userMeter: null, userRating: null, userReviews: null};
-  myAwards: {wins: null, nominations: null, text: ''};
+  myAwards = {wins: null, nominations: null, text: ''};
 
   constructor() {
     this._id= '';
@@ -50,9 +50,9 @@ export class Movie {
     consensus: string;
     userMeter: number;
     userRating: number;
-    userReviews;
+    userReviews: number;
   };
   metacritic: number;
-  awards: { wins: null; nominations: null; text: "" };
+  awards: { wins: number; nominations: number; text: string };
   type: string;
 }
