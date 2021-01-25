@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
   <div class="row">
     <div class="col s12 m6">
       <div class="card">
@@ -192,6 +192,25 @@
                 <input type="text" name="type" #type="ngModel" [(ngModel)]="movieService.selectedMovie.type"
                        placeholder="Enter TYPE"/>
                 <!-- FIN Añadir TYPE a la peli-->
+
+                <!-- SELECT -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="options">
+                      Materialize Select
+                      <select id="options" [(ngModel)]="selectOption" name="selectOption" multiple>
+                        <!-- Primero una vacía para abrir el selector -->
+                        <option value="" disabled selected>Select your option</option>
+                        <!-- Ahora el resto de opciones del array -->
+                        <option *ngFor="let option of options"
+                                [ngValue]="option.value">{{option.name}}</option>
+                      </select>
+                    </label>
+                    <!-- BOTÓN  -->
+                    <button class="btn right" (click)="select()">Select</button>
+                  </div>
+                </div>
+                <!-- FIN SELECT -->
 
                 <!-- BOTÓNES CLEAN & SAVE -->
                 <div class="card-action">

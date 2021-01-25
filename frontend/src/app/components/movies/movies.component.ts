@@ -12,6 +12,22 @@ declare var M: any;
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+  // Vars para select
+  selectOption: any;
+  options = [
+    {
+      name: 'Option 1',
+      value: 1
+    },
+    {
+      name: 'Option 2',
+      value: 2
+    },
+    {
+      name: 'Option 3',
+      value: 3
+    }
+  ];
 
   // Vars para arrays
   myCountry: string;
@@ -24,16 +40,31 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.getMovies(); // Inicializar array al arrancar
+    document.addEventListener('DOMContentLoaded', function (){
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
   }
 
+  // Añadir y Actualizar pelis con addMovie
   addMovie(selectedMovie: Movie, movieForm: NgForm) {
+    // Si la peli tiene un id (existe), la actualizo, si no la creo (nueva)
+    if (selectedMovie._id){
+      this.movieService.putMovie(selectedMovie)
+        .subscribe(res => {
+          this.resetForm(movieForm);
+          M.toast({html: 'Updated Succesfully'});
+          this.getMovies(); // Actualiza la lista
+        });
+    } else {
     console.log('peli: ', selectedMovie, 'formulario:', movieForm);
     this.movieService.postMovie(selectedMovie)
       .subscribe(res => {
         console.log('res: ', res);
-        M.toast({html: 'Saved Succesful'});
+        M.toast({html: 'Saved Succesfully'});
         this.getMovies();
       });
+    }
   }
 
   addCountry(){
@@ -85,10 +116,22 @@ export class MoviesComponent implements OnInit {
   }
 
   editMovie(movie: Movie) {
-
+    this.movieService.selectedMovie = movie;
   }
 
   deleteMovie(_id: string) {
+    // Pedir confirmación para borrar
+    if (confirm('Are your sure you want to delete this?')){
+      this.movieService.deleteMovie(_id)
+        .subscribe(res => {
+          M.toast({html: 'Deleted movie'});
+          this.getMovies(); // Actualizar lista después de borrar
+        });
+    }
+  }
 
+  // Func para select (Mostrar elemento por consola)
+  select(){
+    console.log('SelectOption: ', this.selectOption);
   }
 }
