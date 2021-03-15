@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // URL server (MongoDB Atlas)
-const URI = 'mongodb+srv://root:root@cluster0.t1j0m.mongodb.net/damc2020?retryWrites=true&w=majority';
+const URI = '';
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
